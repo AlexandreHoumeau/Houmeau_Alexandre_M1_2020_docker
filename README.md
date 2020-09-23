@@ -26,3 +26,62 @@ Or, by launching the app with ``` docker-compose up ``` the database is filled w
   * email: Hello@gmail.com
   * password: test
 
+## SETUP
+
+#### DOCKER SETUP
+***frontend/Dockerfile***
+````
+FROM mhart/alpine-node:12
+WORKDIR /frontend/
+COPY . /frontend/
+RUN npm install
+EXPOSE 3000
+CMD [ "npm", "start" ]
+````
+
+
+***backend/Dockerfile***
+````
+FROM node:10
+WORKDIR /app
+COPY . .
+RUN npm install
+EXPOSE 8080
+CMD [ "node", "server.js" ]
+````
+
+
+***mongo_seed/Dockerfile***
+````
+FROM mongo:latest
+COPY init.json /init.json
+CMD  mongoimport --host mongo --db=messageNode --collection=users --drop --type json --file /init.json --jsonArray
+````
+***docker-compose.yml***
+````
+version: "3"
+services:
+  api:
+    container_name: api_message_node
+    build: ./backend
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo:3.6
+    expose:
+      - 27017
+    ports:
+      - 27017:27017
+  mongo-seed:
+    build: ./mongo_seed
+    depends_on:
+      - mongo 
+
+  frontend:
+    container_name: client
+    build: frontend
+    ports:
+      - "3000:3000"
