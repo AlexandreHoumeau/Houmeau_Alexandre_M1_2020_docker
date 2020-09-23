@@ -1,0 +1,31 @@
+version: "3"
+services:
+  api:
+    container_name: api_message_node
+    build: ./backend
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo:3.6
+    expose:
+      - 27017
+    ports:
+      - 27017:27017
+  mongo-seed:
+    build: ./mongo_seed
+    depends_on:
+      - mongo 
+
+  frontend:
+    container_name: client
+    build: frontend
+    ports:
+      - "3000:3000"
+
+# Définition des volumes:
+volumes:
+  mongo-storage:
+    driver: local
