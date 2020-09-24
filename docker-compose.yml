@@ -25,7 +25,6 @@ services:
     ports:
       - "3000:3000"
 
-# Définition des volumes:
 volumes:
   mongo-storage:
     driver: local
