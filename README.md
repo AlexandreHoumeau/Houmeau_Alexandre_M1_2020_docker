@@ -6,7 +6,7 @@ Client project using endpoints for:
   * Article: CRUD system
 
 
-### Pré-requis
+### Prerequisites
 
 What you need to use it:
   * GitHub
