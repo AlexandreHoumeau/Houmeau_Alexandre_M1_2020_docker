@@ -85,3 +85,24 @@ services:
     build: frontend
     ports:
       - "3000:3000"
+````
+
+## Docker Hub
+This project can be found on ***Docker Hub***
+
+#### Docker Hub Setup
+***Backend setup:***
+ * ````docker login --username USERNAME --password PASSWORD````
+ * ````docker build -t backend:1.0````
+ * ````docker tag imageID repositoryID/backend:1.0 ````
+ 
+ ***Frontend setup:***
+ * ````docker build -t frontend:1.0````
+ * ````docker tag imageID repositoryID/frontend:1.0 ````
+ 
+ ***Mongo Seed setup:***
+ * ````docker build -t mongo_seed:1.0````
+ * ````docker tag imageID repositoryID/mongo_seed:1.0 ````
+ 
+ 
+
