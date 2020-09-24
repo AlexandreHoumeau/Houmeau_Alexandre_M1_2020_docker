@@ -1,4 +1,4 @@
-# API MERN STACK - DOCKER
+# API MERN STACK - DOCKER :whale:
 
 Simple API using MERN stack and Docker.
 Client project using endpoints for: 
