@@ -3,5 +3,10 @@
     "email": "Hello@gmail.com",
     "password": "$2y$12$T8AFjSbDK4ew.dc7y1D7meIviNqwHSCni6sG/uis8ykoViq85dTVG",
     "name": "admin"
+  },
+  {
+    "email": "admin@gmail.com",
+    "password": "$2y$12$wwAnPGZBYnnvfvpWSwYeOesXtmBasabf0O24rqDQ822SwuwnTV5cC",
+    "name": "admin2"
   }
 ]
